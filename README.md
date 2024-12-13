@@ -14,6 +14,7 @@ Spring Boot application to demonstrate a simple messaging flow across microservi
 - Run ```CompanyServiceApplication``` class to get the company services up and running.
 - Run ```ReviewServiceApplication``` class to run the review services.
 - Create a company using the following curl,
+  
   ```
   curl --location 'http://localhost:8081/company' \
   --header 'Content-Type: application/json' \
@@ -21,7 +22,9 @@ Spring Boot application to demonstrate a simple messaging flow across microservi
       "name": "Company-Name"
   }'
   ```
+  
 - Add review for the company using the below,
+  
   ```
   curl --location 'http://localhost:8080/review' \
   --header 'Content-Type: application/json' \
