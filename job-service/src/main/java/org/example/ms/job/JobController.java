@@ -16,7 +16,7 @@ public class JobController {
 
     @GetMapping
     public ResponseEntity<?> getAllJobs() throws JobNotFoundException {
-        List<Job> job = jobService.getAllJobs();
+        List<JobWithCompanyDto> job = jobService.getAllJobs();
         return new ResponseEntity<>(job, HttpStatus.OK);
     }
 
