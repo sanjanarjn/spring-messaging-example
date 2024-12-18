@@ -8,13 +8,14 @@
 		<version>3.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example.messaging</groupId>
-	<artifactId>spring-messaging-example</artifactId>
+	<groupId>com.example.ms</groupId>
+	<artifactId>spring-ms-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-messaging-example</name>
 	<modules>
 		<module>company-service</module>
         <module>review-service</module>
+        <module>job-service</module>
     </modules>
 	<packaging>pom</packaging>
 	<description>Demo project for Spring Boot Messaging</description>
