@@ -1,11 +1,14 @@
-package org.example.ms.job;
+package org.example.ms.registry.ms.job.external;
+
+import java.util.List;
 
 public class Company {
 
-    long id;
-    double averageRating;
-    int ratingCount;
-    String name;
+    private long id;
+    private double averageRating;
+    private int ratingCount;
+    private String name;
+    private List<Review> reviews;
 
     public double getAverageRating() {
         return averageRating;
@@ -37,5 +40,13 @@ public class Company {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }

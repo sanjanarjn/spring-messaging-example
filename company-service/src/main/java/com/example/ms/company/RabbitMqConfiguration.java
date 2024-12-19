@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMqConfiguration {
 
-    @Bean
+/*    @Bean
     public Queue companyRatingQueue() {
         return new Queue("companyRating");
     }
@@ -26,5 +26,5 @@ public class RabbitMqConfiguration {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(jsonMessageConverter());
         return rabbitTemplate;
-    }
+    }*/
 }

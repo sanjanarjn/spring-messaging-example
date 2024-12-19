@@ -28,13 +28,18 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getJobById(@PathVariable long id) throws ReviewNotFoundException {
+    public ResponseEntity<?> getReviewById(@PathVariable long id) throws ReviewNotFoundException {
         Review review = reviewService.getReviewById(id);
         return new ResponseEntity<>(review, HttpStatus.OK);
     }
 
+    @GetMapping(params = {"companyId"})
+    public ResponseEntity<?> getReviewByCompanyId(@RequestParam long companyId) throws ReviewNotFoundException {
+        List<Review> review = reviewService.getReviewByCompanyId(companyId);
+        return new ResponseEntity<>(review, HttpStatus.OK);
+    }
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteJobById(@PathVariable long id) throws ReviewNotFoundException {
+    public ResponseEntity<?> deleteReviewById(@PathVariable long id) throws ReviewNotFoundException {
         boolean deleted = reviewService.deleteJobById(id);
         return new ResponseEntity<>(deleted, HttpStatus.OK);
     }

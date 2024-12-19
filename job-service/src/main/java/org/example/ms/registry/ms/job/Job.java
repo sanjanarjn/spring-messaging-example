@@ -1,4 +1,4 @@
-package org.example.ms.job;
+package org.example.ms.registry.ms.job;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,7 +6,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Job {
+public non-sealed class Job extends JobInterface {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

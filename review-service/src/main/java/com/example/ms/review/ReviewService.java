@@ -24,7 +24,7 @@ public class ReviewService {
     public Review addReview(Review review) {
 
         Review savedReview = reviewRepository.save(review);
-        reviewMessageProducer.sendMessage(modelMapper.map(savedReview, ReviewMessage.class));
+       // reviewMessageProducer.sendMessage(modelMapper.map(savedReview, ReviewMessage.class));
         return savedReview;
     }
 
@@ -42,6 +42,10 @@ public class ReviewService {
         else throw new ReviewNotFoundException(MessageFormat.format("Review with id {0} not found", id ));
     }
 
+    public List<Review> getReviewByCompanyId(long companyId) {
+        return reviewRepository.findByCompanyId(companyId);
+    }
+
     public boolean deleteJobById(long id) throws ReviewNotFoundException {
         Optional<Review> reviewOptional = reviewRepository.findById(id);
         if(reviewOptional.isPresent()) {
@@ -51,4 +55,6 @@ public class ReviewService {
         }
         else throw new ReviewNotFoundException(MessageFormat.format("Review with id {0} not found", id ));
     }
+
+
 }

@@ -16,6 +16,7 @@
 		<module>company-service</module>
         <module>review-service</module>
         <module>job-service</module>
+        <module>service-registry</module>
     </modules>
 	<packaging>pom</packaging>
 	<description>Demo project for Spring Boot Messaging</description>
@@ -34,6 +35,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<spring-cloud.version>2024.0.0</spring-cloud.version>
 	</properties>
 
 	<build>
@@ -44,5 +46,17 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>

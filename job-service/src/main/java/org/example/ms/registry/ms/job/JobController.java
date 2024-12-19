@@ -1,4 +1,4 @@
-package org.example.ms.job;
+package org.example.ms.registry.ms.job;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,8 +28,8 @@ public class JobController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getJobById(@PathVariable long id) throws JobNotFoundException {
-        Job job = jobService.getJobById(id);
-        return new ResponseEntity<>(job, HttpStatus.OK);
+        JobWithCompanyDto jobWithCompanyDto = jobService.getJobById(id);
+        return new ResponseEntity<>(jobWithCompanyDto, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

@@ -1,4 +1,4 @@
-package org.example.ms.job;
+package org.example.ms.registry.ms.job;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
