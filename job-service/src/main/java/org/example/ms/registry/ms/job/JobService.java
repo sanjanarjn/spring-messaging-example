@@ -1,5 +1,7 @@
 package org.example.ms.registry.ms.job;
 
+import feign.FeignException;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.example.ms.registry.ms.job.external.Company;
 import org.example.ms.registry.ms.job.external.Review;
 import org.example.ms.registry.ms.job.integration.CompanyClient;
@@ -7,9 +9,6 @@ import org.example.ms.registry.ms.job.integration.ReviewClient;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -47,6 +46,7 @@ public class JobService {
         return savedJob;
     }
 
+    @CircuitBreaker(name="companyBreaker", fallbackMethod = "companyBreakerFallback")
     public JobWithCompanyDto getJobById(long id) throws JobNotFoundException {
 
         Optional<Job> jobOptional = jobRepository.findById(id);
@@ -59,6 +59,13 @@ public class JobService {
         } else throw new JobNotFoundException(MessageFormat.format("Job with id {0} not found", id));
 
     }
+
+    public JobWithCompanyDto companyBreakerFallback(long id, Throwable e) {
+        System.out.println("Fallback triggered for id: " + id);
+        System.out.println("Exception: " + e.getClass().getName() + " - " + e.getMessage());
+        return new JobWithCompanyDto();
+    }
+
 
     private JobWithCompanyDto getJobWithCompanyDto(Job job) {
         Company company = companyClient.getCompany(job.getCompanyId());
